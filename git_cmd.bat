@@ -1,9 +1,10 @@
-git add .
-pause
 @echo off
-set /p commant="Enter commant: "
-pause
+echo  +++++++ adding all new files +++++++
+git add .
+echo   +++++++ write you comment +++++++
+set /p commant="Enter commant ::: "
+echo   +++++++Commiting changes +++++++
 git commit -a -m " %commant%"
-pause
+echo +++++++Push to github +++++++
 git push 
 pause
