@@ -1,8 +1,9 @@
 import imp
+from multiprocessing import context
 from django.shortcuts import render,redirect
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .form import UserRegisterForm
+from .form import UserRegisterForm,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 def register(request):
     if request.method == 'POST':
@@ -18,5 +19,11 @@ def register(request):
     
 @login_required
 def profile(request):
+    u_form = UserUpdateForm()
+    p_form = ProfileUpdateForm()
 
+    context ={
+        'u_form' : u_form,
+        'p_form' : p_form,
+    }
     return render(request,'users/profile.html')
